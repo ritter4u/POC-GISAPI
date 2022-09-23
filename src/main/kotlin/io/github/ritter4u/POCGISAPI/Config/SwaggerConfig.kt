@@ -17,7 +17,7 @@ class SwaggerConfig {
     fun productApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.example.demo"))
+            .apis(RequestHandlerSelectors.basePackage("io.github.ritter4u.POCGISAPI"))
             .build()
             .apiInfo(this.metaInfo())
     }
