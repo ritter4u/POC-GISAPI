@@ -15,6 +15,8 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
+	//https://github.com/data2viz/geojson-kotlin
+	maven { url = uri("https://maven.pkg.jetbrains.space/data2viz/p/maven/public") }
 }
 
 dependencies {
@@ -22,18 +24,22 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-hateoas")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-	implementation("org.modelmapper:modelmapper:3.1.0")
+	implementation("io.springfox:springfox-boot-starter:3.0.0")
 	implementation("io.springfox:springfox-swagger2:3.0.0")
 	implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
-	runtimeOnly("com.h2database:h2")
-	runtimeOnly("org.postgresql:postgresql")
+	implementation("com.h2database:h2")
+	implementation("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	//https://github.com/data2viz/geojson-kotlin
+	implementation("io.data2viz.geojson:core:0.6.4")
 }
 
 tasks.withType<KotlinCompile> {
