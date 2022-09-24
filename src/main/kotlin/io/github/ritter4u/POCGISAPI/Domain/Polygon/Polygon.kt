@@ -1,5 +1,6 @@
 package io.github.ritter4u.POCGISAPI.Domain.Polygon
 
+import io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO.PolygonDTO
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import java.text.Normalizer.Form.NFD
@@ -23,25 +24,6 @@ interface Polygon {
         col_adm_se: String? = null,
         geom: String? = null
     ): PolygonDTO
-}
-
-fun String.slugify(): String = normalize(this, NFD)
-    .replace("[^\\w\\s-]".toRegex(), "")
-    .replace('-', ' ').trim()
-    .replace("\\s+".toRegex(), "-")
-    .lowercase(Locale.getDefault())
-
-interface PolygonRepository {
-    fun getAllPolygons(pageable: Pageable, param: PolygonQueryParam): Page<out Polygon>
-    fun findPolygonByGid(gid:Long):Polygon
-    fun findPolygonByPnu(pnu:String):Polygon
-    fun findPolygonByJibun(jibun:String):Polygon
-    fun findPolygonByBchk(bchk:String):Polygon
-    fun findPolygonBySggOid(sgg_oid:Double):Polygon
-    fun findPolygonByColAdmSe(col_adm_se:String):Polygon
-
-    fun deletePolygon(Polygon: Polygon)
-    fun savePolygon(Polygon: Polygon): Polygon
 }
 
 data class PolygonCreateForm(
@@ -71,13 +53,13 @@ data class PolygonQueryParam(
     val col_adm_se: String? = null,
     val geom : String? = null,
 )
-
-data class PolygonDTO(
-    val gid: Long?,
-    val pnu: String?,
-    val jibun: String?,
-    val bchk: String?,
-    val sgg_oid: Double?,
-    val col_adm_se: String?,
-    val geom: String?
-)
+//
+//data class PolygonDTO(
+//    val gid: Long?,
+//    val pnu: String?,
+//    val jibun: String?,
+//    val bchk: String?,
+//    val sgg_oid: Double?,
+//    val col_adm_se: String?,
+//    val geom: String?
+//)
