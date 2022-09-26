@@ -1,11 +1,8 @@
 package io.github.ritter4u.POCGISAPI.Domain.Polygon
 
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO.PolygonDTO
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
-import java.text.Normalizer.Form.NFD
-import java.text.Normalizer.normalize
-import java.util.*
+import net.postgis.jdbc.geometry.Geometry
+import org.locationtech.jts.geom.MultiPolygon
 
 interface Polygon {
     val gid: Long?
@@ -14,7 +11,7 @@ interface Polygon {
     var bchk: String?
     var sgg_oid: Double?
     var col_adm_se: String?
-    val geom : String?
+    var geom: Geometry?
     fun toDTO(
         gid: Long ? =null,
         pnu: String? = null,
@@ -22,7 +19,7 @@ interface Polygon {
         bchk: String? = null,
         sgg_oid: Double? = null,
         col_adm_se: String? = null,
-        geom: String? = null
+        geom: Geometry? = null
     ): PolygonDTO
 }
 
@@ -33,7 +30,7 @@ data class PolygonCreateForm(
     var bchk: String,
     var sgg_oid: Double,
     var col_adm_se: String,
-    var geom : String
+    var geom: Geometry
 )
 
 data class PolygonUpdateForm(
@@ -42,7 +39,7 @@ data class PolygonUpdateForm(
     var bchk: String,
     var sgg_oid: Double,
     var col_adm_se: String,
-    var geom : String
+    var geom: Geometry
 )
 
 data class PolygonQueryParam(
@@ -51,15 +48,5 @@ data class PolygonQueryParam(
     var bchk: String? = null,
     val sgg_oid: Double? = null,
     val col_adm_se: String? = null,
-    val geom : String? = null,
+    var geom: Geometry?  =null
 )
-//
-//data class PolygonDTO(
-//    val gid: Long?,
-//    val pnu: String?,
-//    val jibun: String?,
-//    val bchk: String?,
-//    val sgg_oid: Double?,
-//    val col_adm_se: String?,
-//    val geom: String?
-//)
