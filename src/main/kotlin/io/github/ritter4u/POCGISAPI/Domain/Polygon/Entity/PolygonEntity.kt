@@ -22,8 +22,19 @@ class PolygonEntity()
     override var bchk: String? = null
     override var sgg_oid: Double? = null
     override var col_adm_se: String? = null
-    @Column(name = "geom", columnDefinition = "geometry(multipolygon, 5179)")
-    override var geom: Geometry? = null
+//    @Column(name = "geom", columnDefinition = "geometry(multipolygon, 5179)")
+//    override var geom: Geometry? = null
+
+//    @JsonSerialize(using = GeometrySerializer::class)
+//    @JsonDeserialize(using = GeometryDeserializer::class)
+//    @Column(name = "geometry", columnDefinition = "Geometry")
+//    fun getGeometry(): Geometry? {
+//        return geom
+//    }
+//
+//    fun setGeometry(geom: Geometry) {
+//        this.geom = geom
+//    }
 
     override fun toDTO(
         gid: Long?,
@@ -32,7 +43,7 @@ class PolygonEntity()
         bchk: String?,
         sgg_oid: Double?,
         col_adm_se: String?,
-        geom: Geometry?,
+//        geom: Geometry?,
     ): PolygonDTO {
         return PolygonDTO(
             gid = gid,
@@ -41,7 +52,7 @@ class PolygonEntity()
             bchk = bchk,
             sgg_oid = sgg_oid,
             col_adm_se = col_adm_se,
-            geom = geom
+//            geom = geom
         )
     }
 }
