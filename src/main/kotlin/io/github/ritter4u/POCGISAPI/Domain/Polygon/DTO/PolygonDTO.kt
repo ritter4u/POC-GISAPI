@@ -11,7 +11,7 @@ data class PolygonDTO(
     val bchk: String?,
     val sgg_oid: Double?,
     val col_adm_se: String?,
-    val geom: Geometry?
+//    val geom: Geometry?
 )
 
 
