@@ -1,7 +1,11 @@
 package io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity
 
+
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO.PolygonDTO
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.Polygon
+import net.postgis.jdbc.geometry.Geometry
+import org.locationtech.jts.geom.MultiPolygon
+
 import javax.persistence.*
 
 @Table(name = "lsmd_cont_ldreg_11110", indexes = [
@@ -18,15 +22,17 @@ class PolygonEntity()
     override var bchk: String? = null
     override var sgg_oid: Double? = null
     override var col_adm_se: String? = null
-    override var geom: String? = null
+    @Column(name = "geom", columnDefinition = "geometry(multipolygon, 5179)")
+    override var geom: Geometry? = null
 
-    override fun toDTO(gid: Long?,
-                       pnu: String?,
-                       jibun: String?,
-                       bchk: String?,
-                       sgg_oid: Double?,
-                       col_adm_se: String?,
-                       geom: String?
+    override fun toDTO(
+        gid: Long?,
+        pnu: String?,
+        jibun: String?,
+        bchk: String?,
+        sgg_oid: Double?,
+        col_adm_se: String?,
+        geom: Geometry?,
     ): PolygonDTO {
         return PolygonDTO(
             gid = gid,

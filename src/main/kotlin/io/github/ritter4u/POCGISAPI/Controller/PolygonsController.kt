@@ -1,18 +1,15 @@
 package io.github.ritter4u.POCGISAPI.Controller
 
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity.PolygonEntity
-import io.github.ritter4u.POCGISAPI.Domain.Polygon.Polygon
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.PolygonQueryParam
-import io.github.ritter4u.POCGISAPI.Infrastructure.Service.PolygonService
 import io.github.ritter4u.POCGISAPI.Infrastructure.Repository.PolygonEntityRepository
-import io.swagger.annotations.Api
+import io.github.ritter4u.POCGISAPI.Infrastructure.Service.PolygonService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PagedResourcesAssembler
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import springfox.documentation.annotations.ApiIgnore
 

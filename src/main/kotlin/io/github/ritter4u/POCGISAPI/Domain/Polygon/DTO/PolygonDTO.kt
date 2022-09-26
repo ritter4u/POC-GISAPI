@@ -1,6 +1,8 @@
 package io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO
 
-import io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity.PolygonEntity
+import net.postgis.jdbc.geometry.Geometry
+import org.locationtech.jts.geom.MultiPolygon
+
 
 data class PolygonDTO(
     val gid: Long?,
@@ -9,7 +11,7 @@ data class PolygonDTO(
     val bchk: String?,
     val sgg_oid: Double?,
     val col_adm_se: String?,
-    val geom: String?
+    val geom: Geometry?
 )
 
 
