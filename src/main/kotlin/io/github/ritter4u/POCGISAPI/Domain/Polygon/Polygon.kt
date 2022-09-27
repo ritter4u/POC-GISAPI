@@ -18,7 +18,7 @@ interface Polygon {
         bchk: String? = null,
         sgg_oid: Double? = null,
         col_adm_se: String? = null,
-        geom: Geometry? = null,
+        geom: Geometry? = null
     ): PolygonDTO
 }
 
@@ -29,7 +29,7 @@ data class PolygonCreateForm(
     var bchk: String,
     var sgg_oid: Double,
     var col_adm_se: String,
-    var geom: Geometry,
+    var geom: Geometry
 )
 
 data class PolygonUpdateForm(
@@ -38,7 +38,7 @@ data class PolygonUpdateForm(
     var bchk: String,
     var sgg_oid: Double,
     var col_adm_se: String,
-    var geom: Geometry,
+    var geom: Geometry
 )
 
 data class PolygonQueryParam(
@@ -47,5 +47,5 @@ data class PolygonQueryParam(
     var bchk: String? = null,
     val sgg_oid: Double? = null,
     val col_adm_se: String? = null,
-    var geom: Geometry? = null,
+    var geom: Geometry? = null
 )

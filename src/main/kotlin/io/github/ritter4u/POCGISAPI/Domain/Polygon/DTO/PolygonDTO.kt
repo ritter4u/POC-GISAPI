@@ -13,5 +13,3 @@ data class PolygonDTO
     val col_adm_se: String?,
     val geom: Geometry?,
 ) : Serializable
-
-
