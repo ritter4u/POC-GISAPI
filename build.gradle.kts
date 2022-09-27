@@ -1,12 +1,12 @@
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.4"
-	id("io.spring.dependency-management") version "1.0.14.RELEASE"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.jpa") version "1.6.21"
+    id("org.springframework.boot") version "2.7.4"
+    id("io.spring.dependency-management") version "1.0.14.RELEASE"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.6.21"
+    kotlin("jvm") version "1.6.21"
+    kotlin("plugin.spring") version "1.6.21"
+    kotlin("plugin.jpa") version "1.6.21"
 
 }
 
@@ -15,59 +15,59 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-	mavenCentral()
-	//https://github.com/data2viz/geojson-kotlin
-	maven { url = uri("https://maven.pkg.jetbrains.space/data2viz/p/maven/public") }
+    mavenCentral()
+    //https://github.com/data2viz/geojson-kotlin
+    maven { url = uri("https://maven.pkg.jetbrains.space/data2viz/p/maven/public") }
 }
 
-configurations{
-	all {
-		exclude(group = "*", module = "spring-boot-starter-logging")
-		exclude(group = "*", module = "ch.qos.*")
+configurations {
+    all {
+        exclude(group = "*", module = "spring-boot-starter-logging")
+        exclude(group = "*", module = "ch.qos.*")
 
-	}
-//	implementation {
-//		resolutionStrategy.failOnVersionConflict()
-//	},
-
+    }
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-hateoas")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-	implementation("io.springfox:springfox-boot-starter:3.0.0")
-	implementation("io.springfox:springfox-swagger2:3.0.0")
-	implementation("io.springfox:springfox-swagger-ui:3.0.0")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.springfox:springfox-swagger2:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
-	// https://mvnrepository.com/artifact/org.hibernate/hibernate-spatial
-	implementation("org.hibernate:hibernate-spatial:6.1.3.Final")
-	implementation("com.h2database:h2:2.1.214")
-	implementation("org.postgresql:postgresql:42.5.0")
-	implementation("net.postgis:postgis-jdbc:2021.1.0")
-	implementation("org.orbisgis.data:h2gis:2.0.0")
+    // https://mvnrepository.com/artifact/com.bedatadriven/jackson-datatype-jts
+    implementation("org.locationtech.jts:jts-core:1.19.0")
 
-	//https://github.com/data2viz/geojson-kotlin
-	implementation("io.data2viz.geojson:core:0.6.4")
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-spatial
+    implementation("org.hibernate:hibernate-spatial:5.4.28.Final")
+    implementation("net.postgis:postgis-jdbc:2021.1.0")
 
-	implementation("io.github.dellisd.spatialk:geojson:0.2.1")
-//	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+noArg {
+    annotation("javax.persistence.Entity")
+}
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
-	}
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
