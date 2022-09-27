@@ -1,19 +1,17 @@
 package io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity
 
-
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO.PolygonDTO
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.Polygon
-import net.postgis.jdbc.geometry.Geometry
-import org.locationtech.jts.geom.MultiPolygon
-
+import org.locationtech.jts.geom.Geometry
 import javax.persistence.*
 
-@Table(name = "lsmd_cont_ldreg_11110", indexes = [
-    Index(name = "idx_polygons_gid", columnList = "gid")
-])
+@Table(
+    name = "lsmd_cont_ldreg_11110", indexes = [
+        Index(name = "idx_polygons_gid", columnList = "gid")
+    ]
+)
 @Entity
-class PolygonEntity()
-    : Polygon {
+class PolygonEntity : Polygon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     override val gid: Long? = null
@@ -22,6 +20,7 @@ class PolygonEntity()
     override var bchk: String? = null
     override var sgg_oid: Double? = null
     override var col_adm_se: String? = null
+
     @Column(name = "geom", columnDefinition = "geometry(multipolygon, 5179)")
     override var geom: Geometry? = null
 

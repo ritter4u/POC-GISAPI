@@ -1,5 +1,4 @@
 package io.github.ritter4u.POCGISAPI.Controller
-
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity.PolygonEntity
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.PolygonQueryParam
 import io.github.ritter4u.POCGISAPI.Infrastructure.Repository.PolygonEntityRepository
@@ -15,8 +14,7 @@ import springfox.documentation.annotations.ApiIgnore
 
 @RestController
 public class PolygonsController(
-    private val polygonRepository: PolygonEntityRepository,
-//    private val modelMapper: ModelMapper,
+    private val polygonRepository: PolygonEntityRepository
 ) {
     @Autowired
     private lateinit var polygonService: PolygonService
