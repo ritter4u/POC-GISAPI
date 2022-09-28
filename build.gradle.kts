@@ -49,6 +49,9 @@ dependencies {
     implementation("org.hibernate:hibernate-spatial:5.4.28.Final")
     implementation("net.postgis:postgis-jdbc:2021.1.0")
 
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.4")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

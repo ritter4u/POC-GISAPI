@@ -2,6 +2,7 @@ package io.github.ritter4u.POCGISAPI.Domain.Polygon.Entity
 
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.DTO.PolygonDTO
 import io.github.ritter4u.POCGISAPI.Domain.Polygon.Polygon
+import net.minidev.json.annotate.JsonIgnore
 import org.locationtech.jts.geom.Geometry
 import javax.persistence.*
 
@@ -20,7 +21,7 @@ class PolygonEntity : Polygon {
     override var bchk: String? = null
     override var sgg_oid: Double? = null
     override var col_adm_se: String? = null
-
+    @JsonIgnore
     @Column(name = "geom", columnDefinition = "geometry(multipolygon, 5179)")
     override var geom: Geometry? = null
 
